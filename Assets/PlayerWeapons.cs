@@ -6,6 +6,10 @@ public class PlayerWeapons : MonoBehaviour
 {
     bool melee = false;
     public Transform weapons;
+
+    public GameObject ranged;
+    public GameObject sword;
+
     public Rigidbody2D rb;
     public Camera cam;
     Vector2 mousePos;
@@ -13,11 +17,33 @@ public class PlayerWeapons : MonoBehaviour
     public Transform firePoint;
     public GameObject projectile;
     public float bulletForce = 20f;
+    private float rtimeBtwAttack;
+    public float rstartTimeBtwAttack = 0.5f;
+
+    [Header("Melee System")]
+    private float mtimeBtwAttack;
+    public float mstartTimeBtwAttack = 0.3f;
+    public float meleeDmg;
+    public Animator anim;
+
+    public Transform attackPos;
+    public LayerMask enemyLayer;
+    public float attackRange;
 
     // Start is called before the first frame update
     void Start()
     {
         melee = false;
+        if (melee)
+        {
+            ranged.SetActive(false);
+            sword.SetActive(true);
+        }
+        else
+        {
+            ranged.SetActive(true);
+            sword.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -26,9 +52,51 @@ public class PlayerWeapons : MonoBehaviour
         weapons.position = transform.position;
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0))
+
+
+        if (rtimeBtwAttack <= 0 && !melee)
         {
-            Attack();
+            if (Input.GetMouseButtonDown(0))
+            {
+                Attack();
+                rtimeBtwAttack = rstartTimeBtwAttack;
+            }
+        }
+        else { 
+            rtimeBtwAttack -= Time.deltaTime;
+        }
+
+
+        if (mtimeBtwAttack <= 0 && melee)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Attack();
+                mtimeBtwAttack = mstartTimeBtwAttack;
+            }
+        }
+        else
+        {
+            mtimeBtwAttack -= Time.deltaTime;
+        }
+
+
+
+
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            melee = !melee;
+            if (melee)
+            {
+                ranged.SetActive(false);
+                sword.SetActive(true);
+            }
+            else
+            {
+                ranged.SetActive(true);
+                sword.SetActive(false);
+            }
         }
     }
 
@@ -49,8 +117,21 @@ public class PlayerWeapons : MonoBehaviour
 
             bulletrb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
         }
-        else { 
+        else {
             //swing sword
+            anim.SetTrigger("Slash");
+            Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemyLayer);
+            foreach (Collider2D col in enemiesToDamage)
+            {
+                col.GetComponent<Enemy>().takeDamage(meleeDmg);
+            }
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
+
     }
 }
