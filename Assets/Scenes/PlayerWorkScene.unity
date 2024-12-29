@@ -260,7 +260,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 14
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1097,6 +1097,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   sprite: {fileID: 1810060202}
+  health: 0
+  maxHealth: 0
+  heart: {fileID: 0}
+  heartArr: {fileID: 0}
 --- !u!114 &1940386689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1117,7 +1121,7 @@ MonoBehaviour:
   firePoint: {fileID: 962279718}
   projectile: {fileID: 3133603398058430171, guid: 37341754ae4e468429f108e34fce4dd2, type: 3}
   bulletForce: 20
-  startTimeBtwAttack: 0.5
+  rstartTimeBtwAttack: 0.5
   mstartTimeBtwAttack: 0.3
   meleeDmg: 3
   anim: {fileID: 931821974}
@@ -1144,7 +1148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3727599059485089500, guid: c102752f31e9025448a6c1d6d600212f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.37
+      value: 13.94
       objectReference: {fileID: 0}
     - target: {fileID: 3727599059485089500, guid: c102752f31e9025448a6c1d6d600212f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1177,6 +1181,22 @@ PrefabInstance:
     - target: {fileID: 3727599059485089500, guid: c102752f31e9025448a6c1d6d600212f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055951079783680165, guid: c102752f31e9025448a6c1d6d600212f, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 50.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055951079783680165, guid: c102752f31e9025448a6c1d6d600212f, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055951079783680165, guid: c102752f31e9025448a6c1d6d600212f, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055951079783680165, guid: c102752f31e9025448a6c1d6d600212f, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 10.95
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
