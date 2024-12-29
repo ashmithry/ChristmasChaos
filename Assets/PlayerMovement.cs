@@ -8,6 +8,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     public Transform sprite;
 
+    [Header("Health")]
+    public float health;
+    public float maxHealth;
+
+    public GameObject heart;
+    public Transform heartArr;
+
     // Start is called before the first frame update
     void Start()
     {
