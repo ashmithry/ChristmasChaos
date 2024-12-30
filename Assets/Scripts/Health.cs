@@ -7,6 +7,7 @@ public class PresentHealth : MonoBehaviour
     private string enemyTag = "Enemy";
 
     private PlayerMovement player;
+    public GameObject dieFX;
 
     private void Start()
     {
@@ -19,6 +20,12 @@ public class PresentHealth : MonoBehaviour
         {
             player.TakeDamage(1);
             other.gameObject.GetComponent<Enemy>().EndSelf();
+        }
+
+        if (player.health <= 0)
+        {
+            Instantiate(dieFX, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }

@@ -124,6 +124,7 @@ public class PlayerWeapons : MonoBehaviour
             foreach (Collider2D col in enemiesToDamage)
             {
                 col.GetComponent<Enemy>().takeDamage(meleeDmg);
+                col.GetComponent<AIChase>().Knockback(1f);
             }
         }
     }

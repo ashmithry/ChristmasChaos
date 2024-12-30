@@ -35,6 +35,10 @@ public class NewBehaviourScript : MonoBehaviour
     private void SetTimeUntilSpawn()
     {
         _timeUntilSpawn = Random.Range(_minimumSpawnTime, _maximumSpawnTime);
+        _minimumSpawnTime = _minimumSpawnTime - 0.05f;
+        _minimumSpawnTime = Mathf.Max(1f, _minimumSpawnTime);
+        _maximumSpawnTime = _maximumSpawnTime - 0.05f;
+        _maximumSpawnTime = Mathf.Max(1f,_maximumSpawnTime);
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -1753,6 +1753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Present
       objectReference: {fileID: 0}
+    - target: {fileID: 7724288048116666256, guid: 90693c210030ac34999aa21eaee02678, type: 3}
+      propertyPath: dieFX
+      value: 
+      objectReference: {fileID: 2921695993492120227, guid: b134ed3f4e0137a4dbe785683933722d, type: 3}
     - target: {fileID: 8149602531613580356, guid: 90693c210030ac34999aa21eaee02678, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -2634,7 +2638,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -6793,6 +6797,7 @@ MonoBehaviour:
   health: 0
   maxHealth: 5
   heart: {fileID: 1659816807844610083, guid: ac8c377bd508ea34e8bc6dac93ecf3ce, type: 3}
+  dieFX: {fileID: 2648293941639611125, guid: a37f17c9ff8ff634c8e2786b6484f73e, type: 3}
   heartArr: {fileID: 1840992160}
   endScreen: {fileID: 1317166742}
 --- !u!114 &1940386689

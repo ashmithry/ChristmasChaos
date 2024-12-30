@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxHealth;
 
     public GameObject heart;
+    public GameObject dieFX;
     public Transform heartArr;
     public GameObject endScreen;
 
@@ -47,11 +48,10 @@ public class PlayerMovement : MonoBehaviour
         if (health <= 0)
         {
             // Destroy player
-            Destroy(gameObject);
-
-            // Show end screen and freeze time
             endScreen.SetActive(true);
             Time.timeScale = 0;
+            Instantiate(dieFX, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
 
         // Adjust hearts

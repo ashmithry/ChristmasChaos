@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float health, maxHealth = 3f;
     public Slider healthSlider;
+    public GameObject dieFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,7 @@ public class Enemy : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(!col.gameObject.name.Contains("Projectile"))
+        if(!col.gameObject.name.Contains("Projectile") && !col.gameObject.name.Contains("Tree") && !col.gameObject.name.Contains("Rock") && !col.gameObject.name.Contains("Bush"))
         {
             EndSelf();
         }
@@ -33,6 +35,7 @@ public class Enemy : MonoBehaviour
 
     public void EndSelf()
     {
+        Instantiate(dieFX, transform.position, Quaternion.identity);
         GameObject.Find("Score").GetComponent<Score>().EnemyKilled();
         Destroy(gameObject);
     }
