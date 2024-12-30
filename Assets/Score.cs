@@ -11,16 +11,22 @@ public class Score : MonoBehaviour
 
     public TextMeshProUGUI scoreTxt;
 
-    // Start is called before the first frame update
+    // Update is called once per frame
     void Update()
     {
-        score += 0.1f;
-        scoreTxt.text = "Score:\n" + Mathf.Round(score);  
+        // Only update the score if the game is not paused
+        if (Time.timeScale > 0)
+        {
+            score += 0.1f;
+            scoreTxt.text = "Score:\n" + Mathf.Round(score);
+        }
     }
 
-    // Update is called once per frame
     public void EnemyKilled()
     {
-        score += 100f;
+        if (Time.timeScale > 0)
+        {
+            score += 100f;
+        }
     }
 }

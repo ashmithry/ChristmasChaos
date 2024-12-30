@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject heart;
     public Transform heartArr;
+    public GameObject endScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -40,23 +41,31 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void TakeDamage(float Damage)
-    { 
+    {
         health -= Damage;
 
         if (health <= 0)
         {
-            //destroy player
+            // Destroy player
+            Destroy(gameObject);
+
+            // Show end screen and freeze time
+            endScreen.SetActive(true);
+            Time.timeScale = 0;
         }
 
-        //adjust hearts
+        // Adjust hearts
         Transform[] hearts = heartArr.GetComponentsInChildren<Transform>();
 
-        for (int i = hearts.Length-1; i > hearts.Length-Damage-1; i++)
+        for (int i = hearts.Length - 1; i > hearts.Length - Damage - 1; i--)
         {
             Debug.Log(hearts[i].name);
             Destroy(hearts[i].gameObject);
         }
     }
+
+
+
 
     void OnCollisionEnter2D(Collision2D col)
     {
