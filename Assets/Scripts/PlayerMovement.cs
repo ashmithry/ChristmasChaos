@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Destroy player
             endScreen.SetActive(true);
+            LeanTween.scale(endScreen, new Vector3(1f, 1f, 1), 0.1f).setEase(LeanTweenType.easeInExpo);
             Time.timeScale = 0;
             Instantiate(dieFX, transform.position, Quaternion.identity);
             Destroy(gameObject);

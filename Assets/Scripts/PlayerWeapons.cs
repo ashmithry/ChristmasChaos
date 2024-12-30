@@ -133,6 +133,5 @@ public class PlayerWeapons : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPos.position, attackRange);
-
     }
 }
