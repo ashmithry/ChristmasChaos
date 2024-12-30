@@ -35,6 +35,8 @@ public class Enemy : MonoBehaviour
 
     public void EndSelf()
     {
+        AudioManager mgr = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        mgr.Play("die");
         Instantiate(dieFX, transform.position, Quaternion.identity);
         GameObject.Find("Score").GetComponent<Score>().EnemyKilled();
         Destroy(gameObject);

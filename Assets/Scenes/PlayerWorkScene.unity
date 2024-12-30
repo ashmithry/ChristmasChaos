@@ -858,11 +858,11 @@ PrefabInstance:
       objectReference: {fileID: 1956857071635034387, guid: 94739026a20bad04592c054f5191de7f, type: 3}
     - target: {fileID: 1246595650606346235, guid: 1e4f4f7e395369e4ebb346f9e11e6ed8, type: 3}
       propertyPath: _maximumSpawnTime
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1246595650606346235, guid: 1e4f4f7e395369e4ebb346f9e11e6ed8, type: 3}
       propertyPath: _minimumSpawnTime
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1459231175294689433, guid: 1e4f4f7e395369e4ebb346f9e11e6ed8, type: 3}
       propertyPath: m_Icon
@@ -5333,7 +5333,7 @@ RectTransform:
   m_GameObject: {fileID: 1317166742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 978783366}
@@ -6191,6 +6191,66 @@ MonoBehaviour:
   score: 0
   multiplier: 10
   scoreTxt: {fileID: 1633964522}
+--- !u!1 &1660236033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1660236035}
+  - component: {fileID: 1660236034}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1660236034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660236033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0fe9d5b1e267b74c83574bd4924399f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: bow
+    clip: {fileID: 8300000, guid: e78251485ce4713438116cd0ff522c12, type: 3}
+    volume: 0.542
+    pitch: 0
+    source: {fileID: 0}
+  - name: sword
+    clip: {fileID: 8300000, guid: c5135fd3c77665e468ea91b83385ecb5, type: 3}
+    volume: 0.542
+    pitch: 0
+    source: {fileID: 0}
+  - name: die
+    clip: {fileID: 8300000, guid: 9dba54e859a6d874ea5e407605c4adb6, type: 3}
+    volume: 0.542
+    pitch: 0
+    source: {fileID: 0}
+--- !u!4 &1660236035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660236033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1683865155
 GameObject:
   m_ObjectHideFlags: 0
@@ -7419,6 +7479,7 @@ MonoBehaviour:
   dieFX: {fileID: 2648293941639611125, guid: a37f17c9ff8ff634c8e2786b6484f73e, type: 3}
   heartArr: {fileID: 1840992160}
   endScreen: {fileID: 1317166742}
+  finalScore: {fileID: 0}
 --- !u!114 &1940386689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8379,3 +8440,4 @@ SceneRoots:
   - {fileID: 453422190}
   - {fileID: 992013584}
   - {fileID: 783778059}
+  - {fileID: 1660236035}

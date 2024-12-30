@@ -109,9 +109,11 @@ public class PlayerWeapons : MonoBehaviour
 
     void Attack()
     {
+        AudioManager mgr = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         if (!melee)
         {
             //shoot bullet
+            mgr.Play("bow");
             GameObject bullet = Instantiate(projectile, firePoint.position, firePoint.rotation);
             Rigidbody2D bulletrb = bullet.GetComponent<Rigidbody2D>();
 
@@ -119,6 +121,7 @@ public class PlayerWeapons : MonoBehaviour
         }
         else {
             //swing sword
+            mgr.Play("sword");
             anim.SetTrigger("Slash");
             Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemyLayer);
             foreach (Collider2D col in enemiesToDamage)

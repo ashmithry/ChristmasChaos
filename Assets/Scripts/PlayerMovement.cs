@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject dieFX;
     public Transform heartArr;
     public GameObject endScreen;
+    public TextMeshProUGUI finalScore;
 
     // Start is called before the first frame update
     void Start()
@@ -49,8 +52,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Destroy player
             endScreen.SetActive(true);
-            LeanTween.scale(endScreen, new Vector3(1f, 1f, 1), 0.1f).setEase(LeanTweenType.easeInExpo);
-            Time.timeScale = 0;
+            finalScore.text = "Final Score: " + Mathf.Round(GameObject.Find("Score").GetComponent<Score>().score);
             Instantiate(dieFX, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
@@ -58,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         // Adjust hearts
         Transform[] hearts = heartArr.GetComponentsInChildren<Transform>();
 
-        for (int i = hearts.Length - 1; i > hearts.Length - Damage - 1; i--)
+        for (int i = hearts.Length - 1; i >= hearts.Length - Damage; i--)
         {
             Debug.Log(hearts[i].name);
             Destroy(hearts[i].gameObject);
